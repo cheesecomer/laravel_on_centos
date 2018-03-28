@@ -20,3 +20,15 @@ usermod -aG docker vagrant
 
 systemctl enable docker
 systemctl start docker
+
+# Add EPEL Repository
+if [ ! -e '/etc/yum.repos.d/epel.repo' ]; then
+  yum install -y epel-release
+fi
+
+# Add Remi Repository
+if [ ! -e '/etc/yum.repos.d/remi.repo' ]; then
+  rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
+fi
+
+yum install -y --enablerepo=remi,remi-php72 php php-devel php-mbstring php-pdo php-gd
