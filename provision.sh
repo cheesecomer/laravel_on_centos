@@ -61,9 +61,23 @@ if [ ! -e '/usr/local/bin/git' ]; then
   cd ~/
 fi
 
-if [ ! -e '/vagrant/laravel/www/vendor' ]; then
+if [ ! -d '/vagrant/laravel/www/vendor/' ]; then
   cd /vagrant/laravel/www
   composer install
+fi
+
+if [ ! -e '/vagrant/laravel/www/.env' ]; then
+  cd /vagrant/laravel/www
+  cp .env.example .env
+  php artisan key:generate
+fi
+
+if [ ! -e '/usr/bin/aws' ]; then
+  yum install -y python-pip
+
+  pip install pip --upgrade
+
+  pip install aws-shell
 fi
 
 echo
@@ -74,3 +88,5 @@ docker -v
 php -v | head -n 1
 /usr/local/bin/composer -V
 /usr/local/bin/git --version
+pip -V
+/usr/bin/aws --version
