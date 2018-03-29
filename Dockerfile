@@ -33,6 +33,8 @@ ADD ./php-fpm/xlaravel.pool.conf /usr/local/etc/php-fpm.d/
 
 RUN usermod -u 1000 www-data
 
+COPY ./www /var/www
+
 WORKDIR /var/www
 
 CMD ["php-fpm"]

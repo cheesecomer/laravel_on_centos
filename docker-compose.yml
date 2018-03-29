@@ -9,7 +9,7 @@ services:
         context: .
       volumes:
         - ./php-fpm/php.ini:/usr/local/etc/php/php.ini
-        - ./www:/var/www
+        # - ./www:/var/www
       expose:
         - "9000"
       # extra_hosts:
