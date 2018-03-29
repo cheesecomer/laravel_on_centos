@@ -31,7 +31,7 @@ if [ ! -e '/etc/yum.repos.d/remi.repo' ]; then
 fi
 
 # Install PHP
-yum install -y --enablerepo=remi,remi-php72 php php-devel php-mbstring php-pdo php-gd
+yum install -y --enablerepo=remi,remi-php72 php php-devel php-mbstring php-pdo php-gd php-xml
 
 # Install Composer
 if [ ! -e '/usr/local/bin/composer' ]; then
