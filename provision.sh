@@ -62,8 +62,9 @@ if [ ! -e '/usr/local/bin/git' ]; then
 fi
 
 if [ ! -d '/vagrant/laravel/www/vendor/' ]; then
+  yum install -y zip unzip
   cd /vagrant/laravel/www
-  composer install
+  /usr/local/bin/composer install
 fi
 
 if [ ! -e '/vagrant/laravel/www/.env' ]; then
