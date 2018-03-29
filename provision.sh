@@ -8,7 +8,7 @@ if [ ! -e '/etc/yum.repos.d/docker-ce.repo' ]; then
   yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo && yum makecache fast
 fi
 
-yum install -y docker-ce
+yum install -y docker-ce-18.03.0.ce-1.el7.centos
 
 usermod -aG docker vagrant
 
@@ -59,6 +59,11 @@ if [ ! -e '/usr/local/bin/git' ]; then
   rm -rf git-2.16.3.tar.gz && \
   rm -rf git-2.16.3 && \
   cd ~/
+fi
+
+if [ ! -e '/vagrant/laravel/www/vendor' ]; then
+  cd /vagrant/laravel/www
+  composer install
 fi
 
 echo
